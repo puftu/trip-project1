@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Add Trip</title>
+</head>
+
+<body>
+
+<h1 class="text-center">New trip details</h1>
+<form method="POST" th:action="@{/tripPage}" th:object="${trip}" enctype="multipart/form-data" autocomplete="off">
+    <div class="row justify-content-center mb-4 mt-5">
+        <label class="col-md-2 " for="tName">Trip name:</label>
+        <input class="col-md-4 " type="text" id="tName" th:field="*{name}" required/>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row justify-content-center my-4">
+        <div class="col-md-2 ">Date from:</div>
+        <input class="col-md-4 " type="date" data-date-format="YYYY MM DD" th:field="*{tripStart}" required>
+        <div class="col-md-4"></div>
+
+    </div>
+    <div class="row justify-content-center my-4">
+        <div class="col-md-2 ">Date to:</div>
+        <input class="col-md-4 " type="date" data-date-format="YYYY MM DD" th:field="*{tripEnd}" required>
+        <div class="col-md-4"></div>
+
+    </div>
+
+    <div class="row justify-content-center my-4">
+        <p class="col-md-2 ">Impressions:</p>
+        <textarea class="col-md-4 " rows="4" th:field="*{Impressions}"></textarea>
+        <div class="col-md-4"></div>
+    </div>
+
+    <div class="row justify-content-center my-4">
+        <div class="col-md-2"> Photo 1</div>
+        <input class="col-md-4" type="file" name="file" >
+        <div class="col-md-4"></div>
+    </div>
+
+    <div class="row justify-content-center my-4">
+        <p class="col-md-2 ">Photo 1 description:</p>
+        <textarea class="col-md-4 " rows="4" th:field="*{photo1Description}"></textarea>
+        <div class="col-md-4"></div>
+    </div>
+
+    <div class="row justify-content-center my-4">
+        <div class="col-md-2"> Photo 2</div>
+        <input class="col-md-4" type="file" name="file" >
+        <div class="col-md-4"></div>
+    </div>
+
+    <div class="row justify-content-center my-4">
+        <p class="col-md-2 ">Photo 2 description:</p>
+        <textarea class="col-md-4 " rows="4" th:field="*{photo2Description}"></textarea>
+        <div class="col-md-4"></div>
+    </div>
+
+    <div class="row justify-content-center my-5">
+        <input class="col-md-2 btn btn-primary" type="submit" value="Create trip"/>
+        <div class="col-md-4">
+            <a href="/tripPage" class="btn btn-primary"> Back </a>
+        </div>
+    </div>
+</form>
+</body>
+
+</html>

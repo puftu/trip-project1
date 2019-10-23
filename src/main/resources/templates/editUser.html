@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Add User</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 class="text-center">Edit user </h1>
+    <form method="POST" th:action="@{/editUser}" th:object="${user}" autocomplete="off">
+        <div class="row justify-content-center mb-5 mt-4">
+            <input type="hidden" th:field="*{id}">
+            <label class="col-md-2 " for="fName">First name:</label>
+            <input class="col-md-4 " type="text" id="fName" th:field="*{firstName}"/>
+            <div class="col-md-4"></div>
+        </div>
+
+        <div class="row justify-content-center mb-5 mt-4">
+            <label class="col-md-2 " for="lName">Last name:</label>
+            <input class="col-md-4 " type="text" id="lName" th:field="*{lastName}"/>
+            <div class="col-md-4"></div>
+        </div>
+
+        <div class="row justify-content-center mb-5 mt-4">
+            <label class="col-md-2 " >Username:</label>
+            <input class="col-md-4 " type="text" id="username" th:field="*{username}"  readonly/>
+            <div class="col-md-4"></div>
+        </div>
+
+        <div class="row justify-content-center mb-5 mt-4" sec:authorize="isAuthenticated()">
+            <label class="col-md-2 " for="pass">Password:</label>
+            <input class="col-md-4 " type="password" id="pass" th:field="*{password}"/>
+            <div class="col-md-4"></div>
+        </div>
+
+        <div class="row justify-content-center mb-5 mt-4">
+            <label class="col-md-2 " for="city">City:</label>
+            <input class="col-md-4 " type="text" id="city" th:field="*{city}"/>
+            <div class="col-md-4"></div>
+        </div>
+
+        <p class="text-center text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" ></p>
+        <div class="row justify-content-center mb-5 mt-4">
+            <label class="col-md-2 " for="phone">Phone:</label>
+            <input class="col-md-4 " type="text" id="phone" th:field="*{phone}" readonly/>
+            <div class="col-md-4"></div>
+        </div>
+
+
+        <div class="row justify-content-center my-5">
+            <input class="col-md-2 btn btn-lg btn-primary mx-1 btn-sm" type="submit" value="Edit user"/>
+            <a class="col-md-2 btn btn-lg btn-primary mx-1 btn-sm" href="/tripPage"> Back </a>
+            <div class="col-md-2"></div>
+        </div>
+
+    </form>
+</div>
+</body>
+
+</html>

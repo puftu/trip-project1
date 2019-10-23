@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Add User</title>
+</head>
+
+<body>
+
+<h1 class="text-center">New user details</h1>
+<form method="POST" th:action="@{/addUser}" th:object="${user}" autocomplete="off">
+    <div class="row justify-content-center mb-5 mt-4">
+        <label class="col-md-2 " for="fName">First name:</label>
+        <input class="col-md-4 " type="text" id="fName" th:field="*{firstName}"/>
+        <div class="col-md-4"></div>
+    </div>
+
+    <div class="row justify-content-center mb-5 mt-4">
+        <label class="col-md-2 " for="lName">Last name:</label>
+        <input class="col-md-4 " type="text" id="lName" th:field="*{lastName}"/>
+        <div class="col-md-4"></div>
+    </div>
+
+    <p class="text-danger text-center col-md-8 mb-0" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+    <div class="row justify-content-center mb-5 mt-4">
+        <label class="col-md-2 " for="username">Username:</label>
+        <input class="col-md-4 " type="text" id="username" th:field="*{username}" required/>
+        <div class="col-md-4"></div>
+    </div>
+    <p class="text-danger text-center col-md-8 mb-0" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+    <div class="row justify-content-center mb-5 mt-4">
+        <label class="col-md-2 " for="pass">Password:</label>
+        <input class="col-md-4 " type="password" id="pass" th:field="*{password}" required/>
+        <div class="col-md-4"></div>
+    </div>
+
+    <div class="row justify-content-center mb-5 mt-4">
+        <label class="col-md-2 " for="city">City:</label>
+        <input class="col-md-4 " type="text" id="city" th:field="*{city}"/>
+        <div class="col-md-4"></div>
+    </div>
+    <p class="text-danger text-center col-md-8 mb-0" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" required></p>
+    <div class="row justify-content-center mb-5 mt-4">
+        <label class="col-md-2 " for="phone">Phone:</label>
+        <input class="col-md-4 " type="text" id="phone" th:field="*{phone}"/>
+        <div class="col-md-4"></div>
+    </div>
+
+
+    <div class="row justify-content-center my-5">
+        <input class="col-md-2 btn btn-lg btn-primary btn-sm" type="submit" value="Create User"/>
+        <a class="col-md-2 btn btn-lg btn-primary mx-1 btn-sm" href="/tripPage"> Back </a>
+        <div class="col-md-2"></div>
+    </div>
+</form>
+</body>
+
+</html>
